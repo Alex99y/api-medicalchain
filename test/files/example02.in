@@ -1,0 +1,8 @@
+The connection to the network was successfully tested: basic-sample-network
+	Business network version: 0.6.1-deploy.1
+	Composer runtime version: 0.19.14-20180809130819
+	participant: org.hyperledger.composer.system.NetworkAdmin#HospitalAdmin
+	identity: org.hyperledger.composer.system.Identity#b921daf6a64e8d052187d3a3c8f41689a68655c5d2043f26c3e5dc49b4ef0fad
+
+Command succeeded
+

@@ -20,6 +20,13 @@ registries:
     id:           org.example.empty.Administrador
     name:         Participant registry for org.example.empty.Administrador
     registryType: Participant
+    assets: 
+      9914148: 
+        $class:   org.example.empty.Administrador
+        S:        Administrador
+        name:     Roberto
+        lastname: Mendoza
+        id:       9914148
   org.example.empty.Instituto: 
     id:           org.example.empty.Instituto
     name:         Participant registry for org.example.empty.Instituto
@@ -34,3 +41,4 @@ registries:
     registryType: Participant
 
 Command succeeded
+
