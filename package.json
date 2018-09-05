@@ -1,0 +1,25 @@
+{
+  "name": "api-medicalchain",
+  "version": "1.0.0",
+  "description": "MedicalChain API",
+  "main": "server.js",
+  "scripts": {
+    "test": "node test/test.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alex99y/api-medicalchain.git"
+  },
+  "author": "Alexander Yammine",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Alex99y/api-medicalchain/issues"
+  },
+  "homepage": "https://github.com/Alex99y/api-medicalchain#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "express": "^4.16.3",
+    "yamljs": "^0.3.0"
+  }
+}
