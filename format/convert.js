@@ -1,6 +1,8 @@
 YAML = require('yamljs');
 var fs = require('fs');
 
+//Production environment should use readFile() with callback
+
 module.exports = {
     separate: function(input, callback){
         input = fs.readFileSync(input, 'ascii');

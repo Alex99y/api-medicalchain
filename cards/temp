@@ -1,0 +1,16 @@
+        // Create identity
+        shell.exec("./lib/scripts/newAdmin.sh "+req.file.originalname + " " + req.bod.id + " " + req.body.name);
+        format.getStatus("./lib/tmp/"+req.file.originalname, function(one,two){
+            output = one;
+            status = two;
+        });
+        try {
+            expect(status).to.be.equal("Command succeeded");
+        }catch(error){
+            
+        }
+        // // final
+        // res.setHeader("content-type", "file");
+        // res.setHeader("Content-Disposition", "attachment");
+        // res.setHeader("filename","hola");
+        // fs.createReadStream("../HospitalAdmin@basic-sample-network.card").pipe(res);

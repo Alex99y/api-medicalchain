@@ -1,0 +1,1 @@
+composer identity issue -c $1 -a "org.example.empty.Administrador#"$2 -u $3Admin -f ./lib/tmp/$3Admin.card -x $4 | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g" > ./lib/tmp/$1

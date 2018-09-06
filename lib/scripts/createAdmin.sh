@@ -1,0 +1,1 @@
+composer participant add -c $1 -d '{"$class": "org.example.empty.Administrador","S": "Administrador","name": "'$3'","lastname": "'$4'","id": "'$2'"}' | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g" > ./lib/tmp/$1
