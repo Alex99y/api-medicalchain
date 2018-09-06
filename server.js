@@ -8,19 +8,27 @@ var composer = require('./lib/composer');
 var admin = require('./lib/participants/admin');
 
 
-// Hacer ping a la red
+// Ping the network
 app.post('/ping',upload.single('card'), function Ping(req,res,next) {
     var response;
     composer.ping(req,function(res){response = res;})
     res.send(response);
 });
 
-// Crear Administrador
-app.post('/participant/admin',upload.single('card'), function AdminCreate(req,res,next){
+// Create admin
+app.post('/participant/admin', upload.single('card'), function CreateAdmin(req,res,next){
     var response;
     admin.create(req,function(res){response = res;})
     res.send(response);
 });
 
-// Iniciar servidor
+// Read all admins
+app.post('/participant/getAdmins', upload.single('card'), function ReadAdmins(req,res,next){
+    var response;
+    admin.read(req,function(res){response = res;})
+    res.send(response);
+});
+
+
+// Start server
 app.listen(config["port"],config["host"]);
