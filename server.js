@@ -36,6 +36,18 @@ app.post('/participant/getPatientsById', upload.single('card'), function getPati
     paciente.getById(req,res,function(res){response = res;})
     res.send(response);
 });
+// Update
+app.post('/participant/updatePatient', upload.single('card'), function updatePatient(req,res,next){
+    var response;
+    paciente.update(req,res,function(res){response = res;})
+    res.send(response);
+});
+// DElete
+app.post('/participant/deletePatient', upload.single('card'), function deletePatient(req,res,next){
+    var response;
+    paciente.delete(req,res,function(res){response = res;})
+    res.send(response);
+});
 
 /* --------- PARTICIPANT ADMIN -------- */
 // Create
