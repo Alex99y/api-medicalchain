@@ -7,11 +7,33 @@ var composer = require('./lib/composer');
 var admin = require('./lib/participants/admin');
 var perfilpersonal = require('./lib/assets/perfilpersonal');
 var perfilpublico = require('./lib/assets/perfilpublico');
+var paciente = require('./lib/participants/patient');
 
 // Ping the network
 app.post('/ping',upload.single('card'), function Ping(req,res,next) {
     var response;
     composer.ping(req,function(res){response = res;})
+    res.send(response);
+});
+
+
+/* --------- PARTICIPANT PATIENT -------- */
+// Create
+app.post('/participant/createPatient', upload.single('card'), function CreatePatient(req,res,next){
+    var response;
+    paciente.create(req,res,function(res){response = res;})
+    res.send(response);
+});
+// Get all
+app.post('/participant/getPatients', upload.single('card'), function getPatients(req,res,next){
+    var response;
+    paciente.getAll(req,res,function(res){response = res;})
+    res.send(response);
+});
+// Get by id
+app.post('/participant/getPatientsById', upload.single('card'), function getPatientsById(req,res,next){
+    var response;
+    paciente.getById(req,res,function(res){response = res;})
     res.send(response);
 });
 

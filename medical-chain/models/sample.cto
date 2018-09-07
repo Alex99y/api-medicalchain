@@ -43,6 +43,7 @@ asset PerfilPersonal identified by id {
   o String direccion
   o String TipoSangre
   o String Alergias
+  o Strong Donante
 }
   
 asset PerfilPublico identified by id {
