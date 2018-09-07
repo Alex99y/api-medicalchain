@@ -1,6 +1,5 @@
 var config = require('./appconfig.json');
 var express = require('express');
-var bodyParser = require('body-parser')
 var multer  = require('multer')
 var upload = multer({ dest: config["uploadDir"] })
 var app = express();
@@ -45,6 +44,18 @@ app.post('/asset/getPerfilPersonal',upload.single('card'),function getAllPp(req,
 app.post('/asset/getPerfilPersonalByID',upload.single('card'),function getPpById(req,res,next){
     var response;
     perfilpersonal.getById(req,res,function(res){response=res;});
+    res.send(response);
+});
+
+app.post('/asset/deletePerfilPersonal',upload.single('card'),function deletePp(req,res,next){
+    var response;
+    perfilpersonal.delete(req,res,function(res){response=res;});
+    res.send(response);
+});
+
+app.post('/asset/updatePerfilPersonal',upload.single('card'),function updatePp(req,res,next){
+    var response;
+    perfilpersonal.update(req,res,function(res){response=res;});
     res.send(response);
 });
 
