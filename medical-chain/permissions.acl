@@ -1,0 +1,264 @@
+/* --------- SUDO INSTITUTO ---------- */
+rule SudoInstituto {
+    description: "Instituto puede realizar cualquier cosa en la red"
+    participant: "org.example.empty.Instituto"
+    operation: ALL
+    resource: "org.example.empty.**"
+    action: ALLOW
+}
+/* ----------------------------------- */
+
+/* Administrador puede crear usuarios */
+rule CrearPacientes {
+  description: "Administrador tiene permiso de crear pacientes"
+  participant: "org.example.empty.Administrador"
+  operation: CREATE, UPDATE, READ
+  resource: "org.example.empty.Paciente"
+  action: ALLOW
+}
+rule CrearMedicos {
+  description: "Administrador tiene permiso de crear medicos"
+  participant: "org.example.empty.Administrador"
+  operation: CREATE, UPDATE, READ
+  resource: "org.example.empty.Medico"
+  action: ALLOW
+}
+rule CrearPerfilPublico {
+  description: "Administrador tiene permiso de crear/modificar perfiles de medicos"
+  participant: "org.example.empty.Administrador"
+  operation: CREATE, UPDATE, READ
+  resource: "org.example.empty.PerfilPublico"
+  action: ALLOW
+}
+rule CrearPerfilPersonal {
+  description: "Administrador tiene permiso de crear/modificar perfiles de pacientes"
+  participant: "org.example.empty.Administrador"
+  operation: CREATE, UPDATE, READ
+  resource: "org.example.empty.PerfilPersonal"
+  action: ALLOW
+}
+rule CrearPerfilHistorialMedico {
+  description: "Administrador tiene permiso de crear historial medico"
+  participant: "org.example.empty.Administrador"
+  operation: CREATE
+  resource: "org.example.empty.HistorialMedico"
+  action: ALLOW
+}
+/* ---- Fin reglas del administrador ---*/
+
+/* Paciente lee su historial medico y su información */
+rule LecturaHistorialMedico {
+ 	description: "Acceso para la lectura del Historial Medico de un paciente por su dueño"
+  	participant(p): "org.example.empty.Paciente"
+  	operation: ALL
+    resource(r): "org.example.empty.HistorialMedico"
+  	condition: (r.paciente.getIdentifier() == p.getIdentifier())
+  	action: ALLOW
+}
+rule LecturaPerfilPersonal {
+ 	description: "Acceso para la lectura del Perfil personal del medico"
+  	participant(p): "org.example.empty.Paciente"
+  	operation: ALL
+    resource(r): "org.example.empty.PerfilPersonal"
+  	condition: (r.getIdentifier() == p.getIdentifier())
+  	action: ALLOW
+}
+/* -------------------------------- */
+
+/* REVOCAR ACCESO DE REGISTROS A UN MEDICO */
+rule RevocarUnMedico {
+  description: "Revocar  un medico, permisos para modificar mi registro"
+  participant (p): "org.example.empty.Paciente"
+  operation: ALL
+  resource (r): "org.example.empty.HistorialMedico"
+  transaction (tx): "org.example.empty.RevocarAccesoMedico" 
+  condition: ( r.paciente.getIdentifier() == p.getIdentifier() )
+  action: ALLOW
+}
+
+rule PacientePuedeActualizarMedico2 {
+  description: "Paciente puede actualizar medico"
+  participant (p): "org.example.empty.Paciente"
+  operation: UPDATE
+  resource (r): "org.example.empty.Medico"
+  transaction (tx): "org.example.empty.RevocarAccesoMedico"
+  condition: (r.pacientes.indexOf(p.id) > -1 )
+  action: ALLOW
+}
+rule PacientePuedeActualizarPaciente2 {
+  description: "Paciente puede actualizar paciente"
+  participant (p): "org.example.empty.Paciente"
+  operation: UPDATE
+  resource (r): "org.example.empty.Paciente"
+  transaction (tx): "org.example.empty.RevocarAccesoMedico"
+  condition: (r.getIdentifier() == p.getIdentifier() )
+  action: ALLOW
+}
+rule PacientesPuedenRealizarTransacciones2 {
+    description: "Permite a los medicos realizar la transacción"
+    participant: "org.example.empty.Paciente"
+    operation: CREATE
+    resource: "org.example.empty.RevocarAccesoMedico"
+    action: ALLOW
+}
+/* ------------ FIN REVOCACION ------------*/
+
+/* Medico lee el historial de sus pacientes */
+rule MedicoAccedeHistorial {
+ description: "Un medico puede acceder al historial de su paciente" 
+ participant (p): "org.example.empty.Medico"
+ operation: READ
+ resource (r): "org.example.empty.HistorialMedico"
+ condition: (r.permisos.indexOf(p.id) > -1)
+ action: ALLOW
+}
+/* ---------------------------------------- */
+
+/* ------ MODIFICAR REGISTRO MÉDICO ------- */
+// ModificarRegistroMedico
+rule ModificarRegistroMedico {
+  description: "Permite a los medicos modificar una transacción"
+  participant(p): "org.example.empty.Medico"
+  operation: ALL
+  resource(r): "org.example.empty.HistorialMedico"
+  transaction (tx): "org.example.empty.ModificarRegistroMedico"
+  condition: ( r.permisos.indexOf(p.id) > -1)
+  action: ALLOW
+}
+rule MedicoModificaHistorial {
+ description: "Un medico puede acceder al historial de su paciente" 
+ participant (p): "org.example.empty.Medico"
+ operation: ALL
+ resource (r): "org.example.empty.HistorialMedico"
+ transaction (tx): "org.example.empty.ModificarRegistroMedico"
+ condition: (r.permisos.indexOf(p.id) > -1)
+ action: ALLOW
+}  
+rule MedicosPuedenRealizarTransacciones {
+    description: "Permite a los medicos realizar la transacción"
+    participant: "org.example.empty.Medico"
+    operation: CREATE
+    resource: "org.example.empty.ModificarRegistroMedico"
+    action: ALLOW
+}
+/* ----------- FIN MODIFICACIÓN ----------- */
+
+/* ----- ASIGNAR PERMISOS A UN MEDICO ------ */
+rule AsignarPermisosMedico {
+  description: "Un paciente podrá asignar los permisos a un medico"
+  participant (p): "org.example.empty.Paciente"
+  operation: ALL
+  resource (r): "org.example.empty.HistorialMedico"
+  transaction (tx): "org.example.empty.AsignarPermisos" 
+  condition: (r.paciente.getIdentifier() == p.getIdentifier())
+  action: ALLOW
+}
+rule PacientePuedeActualizarMedico {
+  description: "Paciente puede actualizar medico"
+  participant (p): "org.example.empty.Paciente"
+  operation: UPDATE
+  resource (r): "org.example.empty.Medico"
+  transaction (tx): "org.example.empty.AsignarPermisos"
+  condition: (r.pacientes.indexOf(p.id) == -1 )
+  action: ALLOW
+}
+rule PacientePuedeActualizarPaciente {
+  description: "Paciente puede actualizar paciente"
+  participant (p): "org.example.empty.Paciente"
+  operation: UPDATE
+  resource (r): "org.example.empty.Paciente"
+  transaction (tx): "org.example.empty.AsignarPermisos"
+  condition: (r.getIdentifier() == p.getIdentifier() )
+  action: ALLOW
+}
+rule PacientePuedeActualizarRegistroMedico {
+  description: "Paciente puede actualizar su registro medico"
+  participant (p): "org.example.empty.Paciente"
+  operation: UPDATE
+  resource (r): "org.example.empty.HistorialMedico"
+  transaction (tx): "org.example.empty.AsignarPermisos"
+  condition: (r.paciente.getIdentifier() == p.getIdentifier() )
+  action: ALLOW
+}
+rule PacientesPuedenRealizarTransacciones {
+    description: "Permite al paciente realizar la transacción"
+    participant: "org.example.empty.Paciente"
+    operation: CREATE
+    resource: "org.example.empty.AsignarPermisos"
+    action: ALLOW
+}
+/* FIN DE ASIGNAR PERMISOS A UN MEDICO*/
+
+
+/* Perfil del medico publico */
+rule TodosPuedenVerMedicos {
+  description: "Acceso para la lectura del Perfil publico del medico"
+  participant: "org.hyperledger.composer.system.Participant"
+  operation: READ
+  resource: "org.example.empty.PerfilPublico"
+  action: ALLOW
+}
+rule TodosPuedenVerMedicos2 {
+  description: "Acceso para la lectura del Perfil publico del medico"
+  participant: "org.hyperledger.composer.system.Participant"
+  operation: READ
+  resource: "org.example.empty.Medico"
+  action: ALLOW
+}
+/* ------------------ */
+
+// TODOS LOS PARTICIPANTES TIENEN ACCESO A LA RED
+rule SystemACL {
+    description: "System ACL to permit all access"
+    participant: "org.hyperledger.composer.system.Participant"
+    operation: ALL
+    resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+}
+rule EntradaPaciente {
+ 	description: "Acceso del paciente a la red"
+  	participant: "org.example.empty.Paciente"
+  	operation: ALL
+    resource: "org.hyperledger.composer.system.Network"
+  	action: ALLOW
+}
+
+rule EntradaMedico {
+ 	description: "Acceso del medico a la red"
+  	participant: "org.example.empty.Medico"
+  	operation: ALL
+    resource: "org.hyperledger.composer.system.Network"
+  	action: ALLOW
+}
+
+rule EntradaAdministrador {
+ 	description: "Acceso del administrador a la red"
+  	participant: "org.example.empty.Administrador"
+  	operation: ALL
+    resource: "org.hyperledger.composer.system.Network"
+  	action: ALLOW
+}
+
+rule EntradaInstituto {
+ 	description: "Acceso del administrador a la red"
+  	participant: "org.example.empty.Instituto"
+  	operation: ALL
+    resource: "org.hyperledger.composer.system.Network"
+  	action: ALLOW
+}
+
+rule NetworkAdminUser {
+    description: "Grant business network administrators full access to user resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: ALL
+    resource: "**"
+    action: ALLOW
+}
+
+rule NetworkAdminSystem {
+    description: "Grant business network administrators full access to system resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: ALL
+    resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+}

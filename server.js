@@ -6,6 +6,7 @@ var upload = multer({ dest: config["uploadDir"] })
 var app = express();
 var composer = require('./lib/composer');
 var admin = require('./lib/participants/admin');
+var perfilpersonal = require('./lib/assets/perfilpersonal');
 
 
 // Ping the network
@@ -29,6 +30,17 @@ app.post('/participant/getAdmins', upload.single('card'), function ReadAdmins(re
     res.send(response);
 });
 
+app.post('/asset/createPerfilPersonal', upload.single('card'),function ReadAssets(req,res,next){
+    var response;
+    perfilpersonal.create(req,res,function(res){response=res;});
+    res.send(response);
+});
+
+app.post('/asset/getPerfilPersonal',upload.single('card'),function getAllPp(req,res,next){
+    var response;
+    perfilpersonal.getAll(req,res,function(res){response=res;});
+    res.send(response);
+});
 
 // Start server
 app.listen(config["port"],config["host"]);

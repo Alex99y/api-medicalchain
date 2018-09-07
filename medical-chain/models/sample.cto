@@ -1,0 +1,81 @@
+namespace org.example.empty
+
+enum UsuarioTipo {
+  o Medico
+  o Paciente
+  o Administrador
+  o Instituto
+}
+
+abstract participant Usuario identified by id {
+ o String id 
+}
+
+participant Paciente extends Usuario {
+  o UsuarioTipo S default = "Paciente"
+  o String[] autorizados
+  --> PerfilPersonal perfil
+}  
+  
+participant Medico extends Usuario {
+  o UsuarioTipo S default = "Medico"
+  o String[] pacientes
+  --> PerfilPublico perfil
+}
+
+participant Administrador extends Usuario {
+  o UsuarioTipo S default = "Administrador"
+  o String name
+  o String lastname
+}
+  
+participant Instituto extends Usuario {
+  o UsuarioTipo S default = "Instituto"
+  o String name
+}
+  
+asset PerfilPersonal identified by id {
+  o String id
+  o String nombre
+  o String apellido
+  o String email
+  o Integer dob
+  o String direccion
+  o String TipoSangre
+  o String Alergias
+}
+  
+asset PerfilPublico identified by id {
+  o String id
+  o String nombre
+  o String apellido
+  o String email
+  o Integer dob
+  o String direccion
+  o String licencia
+}
+
+asset HistorialMedico identified by id {
+  o String id
+  o String hash
+  o String[] permisos
+  o Double version
+  --> Paciente paciente
+}
+  
+transaction AsignarPermisos { 
+  --> HistorialMedico registro
+  --> Medico medico
+}
+  
+transaction ModificarRegistroMedico {
+  --> HistorialMedico registro
+  o Double version
+  o String newHash
+}
+
+transaction RevocarAccesoMedico {
+ --> Medico medico
+ --> HistorialMedico registro
+}
+  
