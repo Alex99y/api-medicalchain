@@ -42,5 +42,11 @@ app.post('/asset/getPerfilPersonal',upload.single('card'),function getAllPp(req,
     res.send(response);
 });
 
+app.post('/asset/getPerfilPersonalByID',upload.single('card'),function getPpById(req,res,next){
+    var response;
+    perfilpersonal.getById(req,res,function(res){response=res;});
+    res.send(response);
+});
+
 // Start server
 app.listen(config["port"],config["host"]);
