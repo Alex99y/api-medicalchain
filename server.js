@@ -84,15 +84,33 @@ app.post('/participant/deletePatient', upload.single('card'), function deletePat
 
 /* --------- PARTICIPANT ADMIN -------- */
 // Create
-app.post('/participant/admin', upload.single('card'), function CreateAdmin(req,res,next){
+app.post('/participant/createAdmin', upload.single('card'), function CreateAdmin(req,res,next){
     var response;
-    admin.create(req,function(res){response = res;})
+    admin.create(req,res,function(res){response = res;})
     res.send(response);
 });
-// Get
-app.post('/participant/getAdmins', upload.single('card'), function ReadAdmins(req,res,next){
+// Get all
+app.post('/participant/getAdmins', upload.single('card'), function getAdmins(req,res,next){
     var response;
-    admin.read(req,function(res){response = res;})
+    admin.getAll(req,res,function(res){response = res;})
+    res.send(response);
+});
+// Get by id
+app.post('/participant/getAdminsById', upload.single('card'), function getAdminsById(req,res,next){
+    var response;
+    admin.getById(req,res,function(res){response = res;})
+    res.send(response);
+});
+// Update
+app.post('/participant/updateAdmin', upload.single('card'), function updateAdmin(req,res,next){
+    var response;
+    admin.update(req,res,function(res){response = res;})
+    res.send(response);
+});
+// Delete
+app.post('/participant/deleteAdmin', upload.single('card'), function deleteAdmin(req,res,next){
+    var response;
+    admin.delete(req,res,function(res){response = res;})
     res.send(response);
 });
 
