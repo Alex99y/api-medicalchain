@@ -9,7 +9,7 @@ var perfilpersonal = require('./lib/assets/perfilpersonal');
 var perfilpublico = require('./lib/assets/perfilpublico');
 var paciente = require('./lib/participants/patient');
 var doctor = require('./lib/participants/doctor');
-
+var historial = require('./lib/assets/historialmedico');
 
 // Ping the network
 app.post('/ping',upload.single('card'), function Ping(req,res,next) {
@@ -148,7 +148,7 @@ app.post('/asset/updatePerfilPersonal',upload.single('card'),function updatePp(r
 
 /* --------- PERFIL PUBLICO ---------- */
 // Create
-app.post('/asset/createPerfilPublico', upload.single('card'),function ReadAssets(req,res,next){
+app.post('/asset/createPerfilPublico', upload.single('card'),function CreatePPAssets(req,res,next){
     var response;
     perfilpublico.create(req,res,function(res){response=res;});
     res.send(response);
@@ -175,6 +175,33 @@ app.post('/asset/deletePerfilPublico',upload.single('card'),function deletePp(re
 app.post('/asset/updatePerfilPublico',upload.single('card'),function updatePp(req,res,next){
     var response;
     perfilpublico.update(req,res,function(res){response=res;});
+    res.send(response);
+});
+
+/* --------- HISTORIAL MEDICO --------- */
+
+// Create
+app.post('/asset/createHistorialMedico', upload.single('card'),function CreateAssetsHH(req,res,next){
+    var response;
+    historial.create(req,res,function(res){response=res;});
+    res.send(response);
+});
+// Get
+app.post('/asset/getHistorialMedico',upload.single('card'),function getAllPp(req,res,next){
+    var response;
+    historial.getAll(req,res,function(res){response=res;});
+    res.send(response);
+});
+// Get by id
+app.post('/asset/getHistorialMedicoByID',upload.single('card'),function getPpById(req,res,next){
+    var response;
+    historial.getById(req,res,function(res){response=res;});
+    res.send(response);
+});
+// Delete
+app.post('/asset/deleteHistorialMedico',upload.single('card'),function deletePp(req,res,next){
+    var response;
+    historial.delete(req,res,function(res){response=res;});
     res.send(response);
 });
 
