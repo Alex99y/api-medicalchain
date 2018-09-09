@@ -10,7 +10,7 @@ var perfilpublico = require('./lib/assets/perfilpublico');
 var paciente = require('./lib/participants/patient');
 var doctor = require('./lib/participants/doctor');
 var historial = require('./lib/assets/historialmedico');
-var giveaccess = require('./lib/transactions/giveAccess');
+var registryAccess = require('./lib/transactions/registryAccess');
 process.title = "api-medical-chain";
 
 // Ping the network
@@ -23,7 +23,12 @@ app.post('/ping',upload.single('card'), function Ping(req,res,next) {
 /* ------------ TRANSACTIONS ------------ */
 app.post('/transaction/giveAccess', upload.single('card'), function giveAccess(req,res,next){
     var response;
-    giveaccess.giveAccess(req,res,function(res){response = res;});
+    registryAccess.giveAccess(req,res,function(res){response = res;});
+    res.send(response);
+});
+app.post('/transaction/revoqueAccess', upload.single('card'), function revoqueAccess(req,res,next){
+    var response;
+    registryAccess.revoqueAccess(req,res,function(res){response = res;});
     res.send(response);
 });
 /* --------- PARTICIPANT DOCTOR --------- */
