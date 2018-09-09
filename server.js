@@ -11,7 +11,7 @@ var paciente = require('./lib/participants/patient');
 var doctor = require('./lib/participants/doctor');
 var historial = require('./lib/assets/historialmedico');
 var registryAccess = require('./lib/transactions/registryAccess');
-process.title = "api-medical-chain";
+process.title = "apimedicalchain";
 
 // Ping the network
 app.post('/ping',upload.single('card'), function Ping(req,res,next) {

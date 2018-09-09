@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node test/test.js",
     "start": "node server.js",
-    "stop": "pkill --signal SIGTERM api-medical-chain"
+    "stop": "pkill --signal SIGTERM apimedicalchain"
   },
   "repository": {
     "type": "git",
