@@ -43,7 +43,7 @@ asset PerfilPersonal identified by id {
   o String direccion
   o String TipoSangre
   o String Alergias
-  o Strong Donante
+  o String Donante
 }
   
 asset PerfilPublico identified by id {
@@ -79,4 +79,3 @@ transaction RevocarAccesoMedico {
  --> Medico medico
  --> HistorialMedico registro
 }
-  
