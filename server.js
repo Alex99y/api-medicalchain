@@ -11,6 +11,7 @@ var paciente = require('./lib/participants/patient');
 var doctor = require('./lib/participants/doctor');
 var historial = require('./lib/assets/historialmedico');
 var registryAccess = require('./lib/transactions/registryAccess');
+var identity = require('./lib/identity/identitiesOperations');
 process.title = "apimedicalchain";
 
 // Ping the network
@@ -18,6 +19,11 @@ app.post('/ping',upload.single('card'), function Ping(req,res,next) {
     var response;
     composer.ping(req,res,function(res){response = res;});
     res.send(response);
+});
+
+/* ------------ IDENTITY OPERATION ------ */
+app.post('/identity/issue', upload.single('card'), function Issue(req,res,next){
+    identity.issueIdentity(req,res,function(){});
 });
 
 /* ------------ TRANSACTIONS ------------ */
