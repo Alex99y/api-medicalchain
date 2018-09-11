@@ -1,0 +1,198 @@
+- 
+  $class:      org.hyperledger.composer.system.Identity
+  identityId:  1791a11c7a52e4d98c63b16d4db7bd8e60dc348f17a042a1b1ba3c232e0316b9
+  name:        admin
+  issuer:      52dd24f7f97ffc651097ca267c606b240cbdd79b6fe5b7e7e8ff39ea584dd564
+  certificate: 
+    """
+      -----BEGIN CERTIFICATE-----
+      MIICFzCCAb2gAwIBAgIUbeiGLNsCTVj3sc7w7jpf6i/Y+EcwCgYIKoZIzj0EAwIw
+      gYcxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1T
+      YW4gRnJhbmNpc2NvMSMwIQYDVQQKExpjZW50cm9tZWRpY28uYWxleGFuZGVyLmNv
+      bTEmMCQGA1UEAxMdY2EuY2VudHJvbWVkaWNvLmFsZXhhbmRlci5jb20wHhcNMTgw
+      OTA0MTQ0NTAwWhcNMTkwOTA0MTQ1MDAwWjAhMQ8wDQYDVQQLEwZjbGllbnQxDjAM
+      BgNVBAMTBWFkbWluMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEz/VBY6HAMcWe
+      iB0mYjK9mNs0q2N30g80kT8qkgj/sxhORN9nnPmbzZTieS+cpDTtzVEP6lAPlnwU
+      glNBgE0YkaNsMGowDgYDVR0PAQH/BAQDAgeAMAwGA1UdEwEB/wQCMAAwHQYDVR0O
+      BBYEFENK1dTqAJJLsfIJ14bX0qkHbHaHMCsGA1UdIwQkMCKAILzx1knVcPDXeSJ6
+      EpsaSS3q2ew/LS8GjH3pcZhMFP26MAoGCCqGSM49BAMCA0gAMEUCIQCXhlRcdQdk
+      HWx9uuEPnzTPM1XARZeV5msrFyu7SgmyOwIgJlDL3JGG9kTjKh+fVPZnps9QQ+Jd
+      sDzPRrQehKPLbbw=
+      -----END CERTIFICATE-----
+      
+    """
+  state:       ACTIVATED
+  participant: resource:org.hyperledger.composer.system.NetworkAdmin#CentroMedicoAdmin
+- 
+  $class:      org.hyperledger.composer.system.Identity
+  identityId:  97ada65ca0add00790b2b9d2277e9af220788e0677d8d3421ca33289bae7c4d6
+  name:        JeanetteYammine
+  issuer:      52dd24f7f97ffc651097ca267c606b240cbdd79b6fe5b7e7e8ff39ea584dd564
+  certificate: 
+  state:       ISSUED
+  participant: resource:org.example.empty.Medico#14260918
+- 
+  $class:      org.hyperledger.composer.system.Identity
+  identityId:  9f93bf839aae86dd80cc6e751063c51fa186f4e45b87798243732626ebdc54e9
+  name:        OmanCastro
+  issuer:      84337b97a0889c94972b6b8eccf98792fb55dd07e1c97348dc932bd96332c2f2
+  certificate: 
+    """
+      -----BEGIN CERTIFICATE-----
+      MIIChTCCAiugAwIBAgIUBhq7uZJ6Fq5SftY9paZAGe3FB38wCgYIKoZIzj0EAwIw
+      fzELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNh
+      biBGcmFuY2lzY28xHzAdBgNVBAoTFmhvc3BpdGFsLmFsZXhhbmRlci5jb20xIjAg
+      BgNVBAMTGWNhLmhvc3BpdGFsLmFsZXhhbmRlci5jb20wHhcNMTgwOTA2MTYwNDAw
+      WhcNMTkwOTA2MTYwOTAwWjAzMRwwDQYDVQQLEwZjbGllbnQwCwYDVQQLEwRvcmcx
+      MRMwEQYDVQQDEwpPbWFuQ2FzdHJvMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE
+      iDuBPpfF89KSffkC3k4byFwv2TRVkPan9Z68Q2D2jm30CuEZXX0k3OTXG+11GMhQ
+      mUm9iu+HZYNJeeC43RHMqKOB0DCBzTAOBgNVHQ8BAf8EBAMCB4AwDAYDVR0TAQH/
+      BAIwADAdBgNVHQ4EFgQUyaXCTM+KdtiRxRYcxGSnIkGryZswKwYDVR0jBCQwIoAg
+      7lBIqN//F8Vn50hza3LJRBWmZhgvftoDXbD5G1ipez8wYQYIKgMEBQYHCAEEVXsi
+      YXR0cnMiOnsiaGYuQWZmaWxpYXRpb24iOiJvcmcxIiwiaGYuRW5yb2xsbWVudElE
+      IjoiT21hbkNhc3RybyIsImhmLlR5cGUiOiJjbGllbnQifX0wCgYIKoZIzj0EAwID
+      SAAwRQIhANO5jxMDl3SSjM4gF/I776NGejJhKHNjBgxyoupuunb2AiBcOidI8GF5
+      MBTQrqOZm7TEZX0wjdP/Enm6OvCrduqJKg==
+      -----END CERTIFICATE-----
+      
+    """
+  state:       ACTIVATED
+  participant: resource:org.example.empty.Administrador#00000000
+- 
+  $class:      org.hyperledger.composer.system.Identity
+  identityId:  a2d661eeddf3d9b99699247770fa87f14a859573357fb6aa14ae0a58c6a4ad6d
+  name:        Alexander
+  issuer:      84337b97a0889c94972b6b8eccf98792fb55dd07e1c97348dc932bd96332c2f2
+  certificate: 
+  state:       ISSUED
+  participant: resource:org.example.empty.Administrador#0000001
+- 
+  $class:      org.hyperledger.composer.system.Identity
+  identityId:  a3c5730c684ea2dd7c80110d5b7e4fd5b8a1783557ba4353a1e70a836d26c0bb
+  name:        PInochito
+  issuer:      52dd24f7f97ffc651097ca267c606b240cbdd79b6fe5b7e7e8ff39ea584dd564
+  certificate: 
+    """
+      -----BEGIN CERTIFICATE-----
+      MIICjDCCAjKgAwIBAgIUMYh2Sx0iYEcpLWKSlPN9UHxqgU8wCgYIKoZIzj0EAwIw
+      gYcxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1T
+      YW4gRnJhbmNpc2NvMSMwIQYDVQQKExpjZW50cm9tZWRpY28uYWxleGFuZGVyLmNv
+      bTEmMCQGA1UEAxMdY2EuY2VudHJvbWVkaWNvLmFsZXhhbmRlci5jb20wHhcNMTgw
+      OTEwMTUzMjAwWhcNMTkwOTEwMTUzNzAwWjAyMRwwDQYDVQQLEwZjbGllbnQwCwYD
+      VQQLEwRvcmcxMRIwEAYDVQQDEwlQSW5vY2hpdG8wWTATBgcqhkjOPQIBBggqhkjO
+      PQMBBwNCAASkYvi/yzV/Lhbl52QBWu1uos9cjVQI7stnAIzl5oLaMCAc9D9elwsi
+      EyAUVA095zIygHcNceyrPAayiVf1/xnlo4HPMIHMMA4GA1UdDwEB/wQEAwIHgDAM
+      BgNVHRMBAf8EAjAAMB0GA1UdDgQWBBTYuUhUzeohV1kT7rvN1s81dpWK5DArBgNV
+      HSMEJDAigCC88dZJ1XDw13kiehKbGkkt6tnsPy0vBox96XGYTBT9ujBgBggqAwQF
+      BgcIAQRUeyJhdHRycyI6eyJoZi5BZmZpbGlhdGlvbiI6Im9yZzEiLCJoZi5FbnJv
+      bGxtZW50SUQiOiJQSW5vY2hpdG8iLCJoZi5UeXBlIjoiY2xpZW50In19MAoGCCqG
+      SM49BAMCA0gAMEUCIQCUvIX/TXPlWEXgXtrjc9PXVf+nCvlS/ka7uRcdM/53GwIg
+      PJ8a8m1QqoLTxhU/nsyayCCcYniHAsVuZ9e8m3WLC6c=
+      -----END CERTIFICATE-----
+      
+    """
+  state:       ACTIVATED
+  participant: resource:org.example.empty.Paciente#123456
+- 
+  $class:      org.hyperledger.composer.system.Identity
+  identityId:  abef87842426f58ab62ec0e66d92bfbefdbafe1172970aa1c6b7d1e2a575de0d
+  name:        RobertoAdmin
+  issuer:      84337b97a0889c94972b6b8eccf98792fb55dd07e1c97348dc932bd96332c2f2
+  certificate: 
+    """
+      -----BEGIN CERTIFICATE-----
+      MIICiDCCAi+gAwIBAgIUV+3gV8nOX33SVTAme8qAMLm3ErIwCgYIKoZIzj0EAwIw
+      fzELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNh
+      biBGcmFuY2lzY28xHzAdBgNVBAoTFmhvc3BpdGFsLmFsZXhhbmRlci5jb20xIjAg
+      BgNVBAMTGWNhLmhvc3BpdGFsLmFsZXhhbmRlci5jb20wHhcNMTgwOTA0MTc0ODAw
+      WhcNMTkwOTA0MTc1MzAwWjA1MRwwDQYDVQQLEwZjbGllbnQwCwYDVQQLEwRvcmcx
+      MRUwEwYDVQQDEwxSb2JlcnRvQWRtaW4wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC
+      AASNG/V8K+m9OUPkFaapTO76b1rrPnk9pi1jFiY1IwozOZ7GttfNq1KYv/8zYXyc
+      2+66m+5knySDP48nW2K6PdZJo4HSMIHPMA4GA1UdDwEB/wQEAwIHgDAMBgNVHRMB
+      Af8EAjAAMB0GA1UdDgQWBBS5mVZARjW4PC3dQ6vwn1UD824qIjArBgNVHSMEJDAi
+      gCDuUEio3/8XxWfnSHNrcslEFaZmGC9+2gNdsPkbWKl7PzBjBggqAwQFBgcIAQRX
+      eyJhdHRycyI6eyJoZi5BZmZpbGlhdGlvbiI6Im9yZzEiLCJoZi5FbnJvbGxtZW50
+      SUQiOiJSb2JlcnRvQWRtaW4iLCJoZi5UeXBlIjoiY2xpZW50In19MAoGCCqGSM49
+      BAMCA0cAMEQCIA2a1ZHjNbhET1kZ9D/BjHM9GWssERB3BMKCi0pewmj2AiBRio6t
+      shD8QxGFTv1aXD78bpwH8+cxi6BAeBQL6GQhhQ==
+      -----END CERTIFICATE-----
+      
+    """
+  state:       REVOKED
+  participant: resource:org.example.empty.Administrador#9914148
+- 
+  $class:      org.hyperledger.composer.system.Identity
+  identityId:  b40aca96374417bbca5b65e0e9993146df5f469dfcc1242f0c77985e477ce77f
+  name:        AntonioAcosta
+  issuer:      52dd24f7f97ffc651097ca267c606b240cbdd79b6fe5b7e7e8ff39ea584dd564
+  certificate: 
+  state:       BOUND PARTICIPANT NOT FOUND
+  participant: resource:org.example.empty.Paciente#9914148
+- 
+  $class:      org.hyperledger.composer.system.Identity
+  identityId:  b921daf6a64e8d052187d3a3c8f41689a68655c5d2043f26c3e5dc49b4ef0fad
+  name:        admin
+  issuer:      84337b97a0889c94972b6b8eccf98792fb55dd07e1c97348dc932bd96332c2f2
+  certificate: 
+    """
+      -----BEGIN CERTIFICATE-----
+      MIICDjCCAbSgAwIBAgIUC3TEWDJFbX0tcsPNJrO3sp302xwwCgYIKoZIzj0EAwIw
+      fzELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNh
+      biBGcmFuY2lzY28xHzAdBgNVBAoTFmhvc3BpdGFsLmFsZXhhbmRlci5jb20xIjAg
+      BgNVBAMTGWNhLmhvc3BpdGFsLmFsZXhhbmRlci5jb20wHhcNMTgwOTA0MTQzODAw
+      WhcNMTkwOTA0MTQ0MzAwWjAhMQ8wDQYDVQQLEwZjbGllbnQxDjAMBgNVBAMTBWFk
+      bWluMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEtbGbZ5NvZ79dfeRZ0KKnpJhB
+      tpxsHf10sCjWK2M8rGldV6piKKhGNVpS8H4lWcKAF6jDRfR5rECD8Y+EwxJ1eaNs
+      MGowDgYDVR0PAQH/BAQDAgeAMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFA6lGGpd
+      H00WF4oyQr8uHhWsVdR2MCsGA1UdIwQkMCKAIO5QSKjf/xfFZ+dIc2tyyUQVpmYY
+      L37aA12w+RtYqXs/MAoGCCqGSM49BAMCA0gAMEUCIQCiBJDtxazDH7seSz0BynK2
+      Ycsg6fyK2qDO/hgAakGi7wIgcMZVGf8E1u3RG0LaMPoYxoC05/8O/ybJnWFY7CEf
+      Zsk=
+      -----END CERTIFICATE-----
+      
+    """
+  state:       ACTIVATED
+  participant: resource:org.hyperledger.composer.system.NetworkAdmin#HospitalAdmin
+- 
+  $class:      org.hyperledger.composer.system.Identity
+  identityId:  c066793da1ec2cdd081a30041c2159326d0aa2e287139ad164369c8e3de65501
+  name:        admin
+  issuer:      6b59737a7a8f1d92ef69dc3126608a3f8674130973ddcca30e8fd7f954d74772
+  certificate: 
+    """
+      -----BEGIN CERTIFICATE-----
+      MIICDDCCAbKgAwIBAgIUDbxd6w7UkOvcYhaRM74ghFrfr1kwCgYIKoZIzj0EAwIw
+      fTELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNh
+      biBGcmFuY2lzY28xHjAcBgNVBAoTFWNsaW5pY2EuYWxleGFuZGVyLmNvbTEhMB8G
+      A1UEAxMYY2EuY2xpbmljYS5hbGV4YW5kZXIuY29tMB4XDTE4MDkwNDE0NDAwMFoX
+      DTE5MDkwNDE0NDUwMFowITEPMA0GA1UECxMGY2xpZW50MQ4wDAYDVQQDEwVhZG1p
+      bjBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABN6rUsQWFzlOIS3mUACa1Qbg799K
+      CoJdC5GuhkEdhmNjouA3OSEX3ih2VsPxlvLZqC+TGaINYamuIOJuT9hwm4CjbDBq
+      MA4GA1UdDwEB/wQEAwIHgDAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBSs2eH393f5
+      ahc9tNic8SlHBm2XajArBgNVHSMEJDAigCCwwx0qplu0QgDObdAuRwmLVdl+9MDD
+      L7B6BuENI6cQijAKBggqhkjOPQQDAgNIADBFAiEAuN/9HEFDpmLn5cD/ovAXUtne
+      vJrttu5NEfu+3MSmQigCIEdCwAyqpyyWWpJgF8gs4nQyYCwLnO66oPtc8LGpWAbl
+      -----END CERTIFICATE-----
+      
+    """
+  state:       ACTIVATED
+  participant: resource:org.hyperledger.composer.system.NetworkAdmin#ClinicaAdmin
+- 
+  $class:      org.hyperledger.composer.system.Identity
+  identityId:  c1f94975bff0f9b6015d1e7c421bed29acd72cf099e271bcf739ab9a0a56b172
+  name:        LamiaYammine
+  issuer:      52dd24f7f97ffc651097ca267c606b240cbdd79b6fe5b7e7e8ff39ea584dd564
+  certificate: 
+  state:       ISSUED
+  participant: resource:org.example.empty.Paciente#9869468
+- 
+  $class:      org.hyperledger.composer.system.Identity
+  identityId:  e332b53bf2f0a0eee447f83c812c1b1dc5f8d38639f3535c5cc6a726f589e821
+  name:        AlexanderYammine
+  issuer:      52dd24f7f97ffc651097ca267c606b240cbdd79b6fe5b7e7e8ff39ea584dd564
+  certificate: 
+  state:       ISSUED
+  participant: resource:org.example.empty.Paciente#15600158
+
+Command succeeded
+

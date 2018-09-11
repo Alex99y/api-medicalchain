@@ -12,6 +12,7 @@ var doctor = require('./lib/participants/doctor');
 var historial = require('./lib/assets/historialmedico');
 var registryAccess = require('./lib/transactions/registryAccess');
 var identity = require('./lib/identity/identitiesOperations');
+var registry = require('./lib/medicalRegistry/medicalRegistry');
 process.title = "apimedicalchain";
 
 // Ping the network
@@ -19,6 +20,14 @@ app.post('/ping',upload.single('card'), function Ping(req,res,next) {
     var response;
     composer.ping(req,res,function(res){response = res;});
     res.send(response);
+});
+
+/* --------- MEDICAL REGISTRY ----------- */
+app.post('/uploadRegistry',upload.fields([{name: "card",maxCount: 1},{name: "file",maxCount: 1}]), 
+function(req,res,next){
+    registry.uploadRegistry(req,res,function(response){
+        res.send(response);
+    })
 });
 
 /* ------------ IDENTITY OPERATION ------ */
@@ -222,6 +231,11 @@ app.post('/asset/deleteHistorialMedico',upload.single('card'),function deletePp(
     var response;
     historial.delete(req,res,function(res){response=res;});
     res.send(response);
+});
+
+/* BAD REQUEST */
+app.all('*', function(req,res,next){
+    res.send('{"status":"fail","description":"Bad request"}');
 });
 
 // Start server

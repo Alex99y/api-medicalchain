@@ -1,1 +1,1 @@
-composer identity issue -c $1 -a $2 -u $3 -x $4 -f $5| sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g" > ./lib/tmp/$1
+composer identity issue -c $1 -a $2 -u $3 -x $4 -f $5 | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g" > ./lib/tmp/$1
