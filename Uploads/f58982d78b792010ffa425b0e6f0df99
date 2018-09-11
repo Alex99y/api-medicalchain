@@ -1,0 +1,26 @@
+'{
+"$class": "org.hyperledger.composer.system.AddAsset",
+"targetRegistry":"resource:org.hyperledger.composer.system.AssetRegistry#org.example.empty.PerfilPublico",
+"resources": 
+[{  "$class": "org.example.empty.PerfilPublico",  "id": "14260918",  "nombre": "Jeanette",  "apellido": "Al Halabi",  "email": "jeanettealhalabi@gmail.com",  "dob": 111110,  "direccion": "SRL,Baruta",  "licencia": "1651521515",  "imagen": "http://unaimagen.com/"
+}]}'
+
+
+'{
+"$class":"org.hyperledger.composer.system.AddAsset",
+"targetRegistry":"resource:org.hyperledger.composer.system.AssetRegistry#org.example.empty.PerfilPersonal",
+"resources":	[{"$class":"org.example.empty.PerfilPersonal","id":"23529986","nombre":"Alexander","apellido":"Yammine","email":"alexyammine94@gmail.com","dob":0,"direccion":"Baruta,srl","TipoSangre":"A+","Alergias":"nothing"
+}]}'
+
+
+
+'{"$class":"org.hyperledger.composer.system.RemoveAsset",
+"targetRegistry":"resource:org.hyperledger.composer.system.AssetRegistry#org.example.empty.PerfilPersonal",
+"resourceIds":["23529986"],
+"resources":[]}'
+
+
+	
+
+'{"$class":"org.hyperledger.composer.system.UpdateAsset","targetRegistry":"resource:org.hyperledger.composer.system.AssetRegistry#org.example.empty.PerfilPersonal",
+"resources":[{"$class":"org.example.empty.PerfilPersonal","id":"15600158","nombre":"Alexander","apellido":"Yammine","email":"alexyammine94@gmail.com","dob":0,"direccion":"Baruta,srl","TipoSangre":"A+","Alergias":"nothing","Donante":"true"}]}'
