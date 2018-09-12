@@ -1,6 +1,6 @@
 composer card delete -c $1 > ./lib/tmp/trash.out &
-rm ./lib/tmp/*
-rm ./cards/*
-rm ./tmp/* -r
-rm ./Uploads/* -r
-rm $2
+rm ./cards/* -f
+rm ./Uploads/* -r -f
+rm ./tmp/* -r -f
+rm ./lib/tmp/* -f
+rm $2 -f
