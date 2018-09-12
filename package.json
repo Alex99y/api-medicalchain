@@ -23,6 +23,7 @@
     "chai": "^4.1.2",
     "composer-client": "^0.19.14-20180809130819",
     "composer-runtime": "^0.19.14-20180809130819",
+    "cryptiles": "^4.1.2",
     "express": "^4.16.3",
     "hoek": "^4.2.1",
     "ipfs-api": "^24.0.1",
