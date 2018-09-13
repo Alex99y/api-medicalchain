@@ -1,8 +1,6 @@
 var config = require('./appconfig.json');
 var express = require('express');
 var multer  = require('multer')
-var upload = multer({ dest: config["uploadDir"] })
-var app = express();
 var composer = require('./lib/composer');
 var admin = require('./lib/participants/admin');
 var perfilpersonal = require('./lib/assets/perfilpersonal');
@@ -13,7 +11,18 @@ var historial = require('./lib/assets/historialmedico');
 var registryAccess = require('./lib/transactions/registryAccess');
 var identity = require('./lib/identity/identitiesOperations');
 var registry = require('./lib/medicalRegistry/medicalRegistry');
+var card = require('./lib/cards');
+var identityOp = require('./lib/identityOp');
 process.title = "apimedicalchain";
+var app = express();
+var upload = multer({ dest: config["uploadDir"] })
+
+if ( !card.init() ){
+    console.log("Error iniciando servidor");
+    process.exit(1);
+}
+
+
 
 // Ping the network
 app.post('/ping',upload.single('card'), function Ping(req,res,next) {
@@ -21,6 +30,14 @@ app.post('/ping',upload.single('card'), function Ping(req,res,next) {
     composer.ping(req,res,function(res){response = res;});
     res.send(response);
 });
+
+/* ---------- CREATE CARD -------- */
+
+app.post('/createCard',upload.single('card'), function(req,res){
+    var response = identityOp.createCard(req.body.name);
+    res.send(response);
+})
+
 
 /* --------- MEDICAL REGISTRY ----------- */
 app.post('/uploadRegistry',upload.fields([{name: "card",maxCount: 1},{name: "file",maxCount: 1}]), 

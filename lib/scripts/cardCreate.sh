@@ -1,0 +1,1 @@
+composer card create -n basic-sample-network -u $1 -p $2 -c $3 -k $4 -f "./cards/"$1"User.card" | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g" > ./lib/tmp/$1

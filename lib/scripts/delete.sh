@@ -3,4 +3,3 @@ rm ./cards/* -f
 rm ./Uploads/* -r -f
 rm ./tmp/* -r -f
 rm ./lib/tmp/* -f
-rm $2 -f

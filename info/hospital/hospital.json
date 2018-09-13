@@ -1,0 +1,118 @@
+{
+    "name": "myapp.com",
+    "x-type": "hlfv1",
+    "version": "1.0.0",
+    "client": {
+        "organization": "Hospital",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300",
+                    "eventHub": "300",
+                    "eventReg": "300"
+                },
+                "orderer": "300"
+            }
+        }
+    },
+    "channels": {
+        "newchannel": {
+            "orderers": [
+                "orderer0.alexander.com",
+                "orderer1.alexander.com",
+                "orderer2.alexander.com"
+            ],
+            "peers": {
+                "peer0.hospital.myapp.com": {
+                    "endorsingPeer": true,
+                    "chaincodeQuery": true,
+                    "eventSource": true
+                },
+                "peer0.clinica.myapp.com": {
+                    "endorsingPeer": true,
+                    "chaincodeQuery": true,
+                    "eventSource": true
+                },
+                "peer0.centromedico.myapp.com": {
+                    "endorsingPeer": true,
+                    "chaincodeQuery": true,
+                    "eventSource": true
+                }
+            }
+        }
+    },
+    "organizations": {
+        "Hospital": {
+            "mspid": "HospitalMSP",
+            "peers": [
+                "peer0.hospital.myapp.com"
+            ],
+            "certificateAuthorities": [
+                "ca.hospital.myapp.com"
+            ]
+        },
+        "Clinica": {
+            "mspid": "ClinicaMSP",
+            "peers": [
+                "peer0.clinica.myapp.com"
+            ],
+            "certificateAuthorities": [
+                "ca.clinica.myapp.com"
+            ]
+        },
+        "CentroMedico": {
+            "mspid": "CentroMedicoMSP",
+            "peers": [
+                "peer0.centromedico.myapp.com"
+            ],
+            "certificateAuthorities": [
+                "ca.centromedico.myapp.com"
+            ]
+        }
+    },
+    "orderers": {
+        "orderer0.alexander.com": {
+            "url": "grpc://8.9.31.19:7050"
+        },
+        "orderer1.alexander.com": {
+            "url": "grpc://8.9.31.19:17050"
+        },
+        "orderer2.alexander.com": {
+            "url": "grpc://8.9.31.19:27050"
+        }
+    },
+    "peers": {
+        "peer0.hospital.myapp.com": {
+            "url": "grpc://66.42.78.69:7051"
+        },
+        "peer0.clinica.myapp.com": {
+            "url": "grpc://207.148.11.108:7051"
+        },
+        "peer0.centromedico.myapp.com": {
+            "url": "grpc://45.76.62.126:7051"
+        }
+    },
+    "certificateAuthorities": {
+        "ca.hospital.myapp.com": {
+            "url": "http://66.42.78.69:7054",
+            "caName": "ca-hospital",
+            "httpOptions": {
+                "verify": false
+            }
+        },
+        "ca.clinica.myapp.com": {
+            "url": "http://207.148.11.108:7054",
+            "caName": "ca-clinica",
+            "httpOptions": {
+                "verify": false
+            }
+        },
+        "ca.centromedico.myapp.com": {
+            "url": "http://45.76.62.126:7054",
+            "caName": "ca-centromedico",
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}
