@@ -1,6 +1,7 @@
 var config = require('./appconfig.json');
 var express = require('express');
-var multer  = require('multer')
+var multer  = require('multer');
+var fs = require('fs');
 var composer = require('./lib/composer');
 var admin = require('./lib/participants/admin');
 var perfilpersonal = require('./lib/assets/perfilpersonal');
@@ -12,16 +13,15 @@ var registryAccess = require('./lib/transactions/registryAccess');
 var identity = require('./lib/identity/identitiesOperations');
 var registry = require('./lib/medicalRegistry/medicalRegistry');
 var card = require('./lib/cards');
+const shell = require('shelljs');
 var identityOp = require('./lib/identityOp');
-process.title = "apimedicalchain";
 var app = express();
 var upload = multer({ dest: config["uploadDir"] })
-
+process.title = "apimedicalchain";
 if ( !card.init() ){
     console.log("Error iniciando servidor");
     process.exit(1);
 }
-
 
 
 // Ping the network
@@ -35,7 +35,15 @@ app.post('/ping',upload.single('card'), function Ping(req,res,next) {
 
 app.post('/createCard',upload.single('card'), function(req,res){
     var response = identityOp.createCard(req.body.name);
-    res.send(response);
+    if ( response.status != "fail") {
+        res.setHeader("content-type", "file");
+        res.setHeader("Content-Disposition", "attachment");
+        res.setHeader("filename",req.body.name+"User.card");
+        fs.createReadStream("./cards/"+ req.body.name +"User.card").pipe(res);
+    }else{
+        res.send(response);
+    }
+    shell.exec("./lib/scripts/deleteCard.sh");
 })
 
 
