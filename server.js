@@ -17,6 +17,7 @@ const shell = require('shelljs');
 var identityOp = require('./lib/identityOp');
 var app = express();
 var upload = multer({ dest: config["uploadDir"] })
+var zip = require("./format/tarOp");
 process.title = "apimedicalchain";
 if ( !card.init() ){
     console.log("Error iniciando servidor");
@@ -45,6 +46,23 @@ app.post('/createCard',upload.single('card'), function(req,res){
     }
     shell.exec("./lib/scripts/deleteCard.sh");
 })
+
+/* ------ BIND CARD IDENTITY ------- */
+
+app.post('/bindIdentity',upload.single('card'), function(req,res){
+    if ( typeof req.body.id == 'undefined' || typeof req.body.type == 'undefined') {
+        res.send('{"status":"fail","message":"Missing params"}');
+    }else{
+        zip.unzip(req.file.filename, function(status){
+            if (!status) { res.send('{"status":"fail","message":"Error unzipping the file"}'); }else{
+                identityOp.bindIdentity(req.file.filename, req.body.type, req.body.id,function(response){
+                    res.send(response);
+                    shell.exec("./lib/scripts/deleteCard.sh")
+                });
+            }
+        });
+    }   
+});
 
 
 /* --------- MEDICAL REGISTRY ----------- */
