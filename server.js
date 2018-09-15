@@ -74,8 +74,16 @@ function(req,res,next){
 });
 
 app.post('/downloadRegistry',upload.single('card'), function(req,res){
-    registry.downloadRegistry(req,res,function(files){
-        res.send(files);
+    registry.downloadRegistry(req,res,function(file){
+        if ( file[0] != "t" ) {
+            res.send(file);
+        }else{
+            res.setHeader("content-type", "file");
+            res.setHeader("Content-Disposition", "attachment");
+            res.setHeader("filename","Medicalregistry.tar");
+            fs.createReadStream(file).pipe(res);
+        }
+        card.remove(req);
     });
 });
 

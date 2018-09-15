@@ -16,8 +16,16 @@ module.exports = {
             callback(false);
         }
     },
-    tar: function(req) {
-
+    tar: function(filename,callback) {
+        var untarFile = "tmp/" + filename;
+        var tarFile = "tmp/" + filename + ".tar";
+        try{
+            tar.pack(untarFile).pipe(fs.createWriteStream(tarFile))
+            .on("close",()=>{ callback(true);})
+        }catch (err){
+            console.log(err);
+            callback(false);
+        }
     },
     unzip: function(filename, callback) {
         try {
