@@ -57,7 +57,7 @@ app.post('/bindIdentity',upload.single('card'), function(req,res){
             if (!status) { res.send('{"status":"fail","message":"Error unzipping the file"}'); }else{
                 identityOp.bindIdentity(req.file.filename, req.body.type, req.body.id,function(response){
                     res.send(response);
-                    shell.exec("./lib/scripts/deleteCard.sh")
+                    shell.exec("./lib/scripts/deleteCard.sh");
                 });
             }
         });
@@ -71,6 +71,12 @@ function(req,res,next){
     registry.uploadRegistry(req,res,function(response){
         res.send(response);
     })
+});
+
+app.post('/downloadRegistry',upload.single('card'), function(req,res){
+    registry.downloadRegistry(req,res,function(files){
+        res.send(files);
+    });
 });
 
 /* ------------ IDENTITY OPERATION ------ */
