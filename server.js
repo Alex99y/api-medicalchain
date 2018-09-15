@@ -80,7 +80,7 @@ app.post('/downloadRegistry',upload.single('card'), function(req,res){
         }else{
             res.setHeader("content-type", "file");
             res.setHeader("Content-Disposition", "attachment");
-            res.setHeader("filename","Medicalregistry.tar");
+            res.setHeader("filename","medicalregistry.tar");
             fs.createReadStream(file).pipe(res);
         }
         card.remove(req);
