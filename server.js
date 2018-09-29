@@ -76,7 +76,7 @@ function(req,res,next){
 app.post('/downloadRegistry',upload.single('card'), function(req,res){
     registry.downloadRegistry(req,res,function(file){
         if ( file[0] != "t" ) {
-            res.send(file);
+            res.status(400).type('json').send(file);
         }else{
             res.setHeader("content-type", "file");
             res.setHeader("Content-Disposition", "attachment");
