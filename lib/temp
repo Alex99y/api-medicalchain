@@ -1,5 +1,0 @@
-// // final
-// res.setHeader("content-type", "file");
-// res.setHeader("Content-Disposition", "attachment");
-// res.setHeader("filename","hola");
-// fs.createReadStream("../HospitalAdmin@basic-sample-network.card").pipe(res);

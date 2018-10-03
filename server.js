@@ -16,13 +16,38 @@ var card = require('./lib/cards');
 const shell = require('shelljs');
 var identityOp = require('./lib/identityOp');
 var app = express();
-var upload = multer({ dest: config["uploadDir"] })
+var upload = multer({ dest: config["uploadDir"], onError : function(err, next) {
+    /* DEBUG */
+    next(err);
+  }
+}),
+function(req, res) {
+  res.status(204).end();
+}})
 var zip = require("./format/tarOp");
 process.title = "apimedicalchain";
-if ( !card.init() ){
-    console.log("Error iniciando servidor");
-    process.exit(1);
+
+
+// Check appconfig json
+if ( typeof config.port == 'undefined' ||
+     typeof config.host == 'undefined' ||
+     typeof config.uploadDir == 'undefined' ||
+     typeof config.debug == 'undefined' ||
+     typeof config.profile == 'undefined' ||
+     typeof config.ipfs == 'undefined' ||
+     typeof config.adminCard == 'undefined') {
+        console.log("Error starting server, missing keys in appconfig.json");
+        process.exit(1);
+}else{
+    // Check admin card
+    if ( !card.init() ){
+        console.log("Error starting server, check the admin card or try again start the server");
+        process.exit(1);
+    }
+    console.log("Starting server on "+config.host + ":" + config.port);
 }
+
+
 
 
 // Ping the network
