@@ -89,32 +89,178 @@ const url= config.host + ":" + config.port;
 //   });
 // });
 
-/* PerfilPersonal operation */
-describe('PerfilPersonal', function() {
-    this.timeout(50000);
-    describe('Create PerfilPersonal', function() {
-        it('Should create PerfilPersonal', function() {
-        
+// /* PerfilPersonal operation */
+// describe('PerfilPersonal', function() {
+//     this.timeout(60000);
+//     describe('Create PerfilPersonal', function() {
+//         it('Should create new PerfilPersonal', function() {
+//             return chai.request(url)
+//                 .post('/asset/createPerfilPersonal')
+//                 .type('multipart/form-data')
+//                 .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+//                 .field("id",randomId)
+//                 .field("name","test")
+//                 .field("lastname","test")
+//                 .field("email","test")
+//                 .field("direction","test")
+//                 .field("date",0)
+//                 .field("allergy","test")
+//                 .field("donor","test")
+//                 .field("bloodtype","test")
+//                 .then( function(res){
+//                     expect(res.status).to.be.equal(200);
+//                 }).catch(function(err){
+//                     throw err;
+//                 });
+//         });
+//     });
+//     describe('Get all PerfilPersonal', function() {
+//         it('Should get all PerfilPersonal', function() {
+//             return chai.request(url)
+//                 .post('/asset/getPerfilPersonal')
+//                 .type('multipart/form-data')
+//                 .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+//                 .then( function(res){
+//                     expect(res.status).to.be.equal(200);
+//                 }).catch(function(err){
+//                     throw err;
+//                 });      
+//         });
+//     });
+//     describe('Get one PerfilPersonal by id', function() {
+//         it('Should get one PerfilPersonal by id', function() {
+//             return chai.request(url)
+//             .post('/asset/getPerfilPersonalById')
+//             .type('multipart/form-data')
+//             .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+//             .field("id",randomId)
+//             .then( function(res){
+//                 expect(res.status).to.be.equal(200);
+//             }).catch(function(err){
+//                 throw err;
+//             });     
+//         });
+//     });
+//     describe('Update PerfilPersonal', function() {
+//         it('Should update PerfilPersonal', function() {
+//             return chai.request(url)
+//                 .post('/asset/updatePerfilPersonal')
+//                 .type('multipart/form-data')
+//                 .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+//                 .field("id",randomId)
+//                 .field("name","test")
+//                 .field("lastname","test")
+//                 .field("email","test")
+//                 .field("direction","test")
+//                 .field("date",0)
+//                 .field("allergy","test")
+//                 .field("donor","test")
+//                 .field("bloodtype","test")
+//                 .then( function(res){
+//                     expect(res.status).to.be.equal(200);
+//                 }).catch(function(err){
+//                     throw err;
+//                 });
+//         });
+//     });
+//     describe('Delete PerfilPersonal', function() {
+//         it('Should delete PerfilPersonal', function() {
+//             return chai.request(url)
+//             .post('/asset/deletePerfilPersonal')
+//             .type('multipart/form-data')
+//             .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+//             .field("id",randomId)
+//             .then( function(res){
+//                 expect(res.status).to.be.equal(200);
+//             }).catch(function(err){
+//                 throw err;
+//             }); 
+//         });
+//     });
+// });
+
+/* PerfilPublico operation */
+describe('PerfilPublico', function() {
+    this.timeout(60000);
+    describe('Create PerfilPublico', function() {
+        it('Should create new PerfilPublico', function() {
+            return chai.request(url)
+                .post('/asset/createPerfilPublico')
+                .type('multipart/form-data')
+                .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+                .field("id",randomId)
+                .field("name","test")
+                .field("lastname","test")
+                .field("email","test")
+                .field("direction","test")
+                .field("date",0)
+                .field("license","test")
+                .then( function(res){
+                    expect(res.status).to.be.equal(200);
+                }).catch(function(err){
+                    throw err;
+                });
         });
     });
-    describe('Get all PerfilPersonal', function() {
-        it('Should get all PerfilPersonal', function() {
-        
+    describe('Get all PerfilPublico', function() {
+        it('Should get all PerfilPublico', function() {
+            return chai.request(url)
+                .post('/asset/getPerfilPublico')
+                .type('multipart/form-data')
+                .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+                .then( function(res){
+                    expect(res.status).to.be.equal(200);
+                }).catch(function(err){
+                    throw err;
+                });      
         });
     });
-    describe('Get one PerfilPersonal by id', function() {
-        it('Should get one PerfilPersonal by id', function() {
-        
+    describe('Get one PerfilPublico by id', function() {
+        it('Should get one PerfilPublico by id', function() {
+            return chai.request(url)
+            .post('/asset/getPerfilPublicoById')
+            .type('multipart/form-data')
+            .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+            .field("id",randomId)
+            .then( function(res){
+                expect(res.status).to.be.equal(200);
+            }).catch(function(err){
+                throw err;
+            });     
         });
     });
-    describe('Update PerfilPersonal', function() {
-        it('Should update PerfilPersonal', function() {
-        
+    describe('Update PerfilPublico', function() {
+        it('Should update PerfilPublico', function() {
+            return chai.request(url)
+                .post('/asset/updatePerfilPublico')
+                .type('multipart/form-data')
+                .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+                .field("id",randomId)
+                .field("name","test")
+                .field("lastname","test")
+                .field("email","test")
+                .field("direction","test")
+                .field("date",0)
+                .field("license","test")
+                .then( function(res){
+                    expect(res.status).to.be.equal(200);
+                }).catch(function(err){
+                    throw err;
+                });
         });
     });
-    describe('Delete PerfilPersonal', function() {
-        it('Should delete PerfilPersonal', function() {
-        
+    describe('Delete PerfilPublico', function() {
+        it('Should delete PerfilPublico', function() {
+            return chai.request(url)
+            .post('/asset/deletePerfilPublico')
+            .type('multipart/form-data')
+            .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+            .field("id",randomId)
+            .then( function(res){
+                expect(res.status).to.be.equal(200);
+            }).catch(function(err){
+                throw err;
+            }); 
         });
     });
 });

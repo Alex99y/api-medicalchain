@@ -227,30 +227,35 @@ app.post('/participant/deleteAdmin', upload.single('card'), function deleteAdmin
 app.post('/asset/createPerfilPersonal', upload.single('card'),function ReadAssets(req,res,next){
     var response;
     perfilpersonal.create(req,res,function(res){response=res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Get
 app.post('/asset/getPerfilPersonal',upload.single('card'),function getAllPp(req,res,next){
     var response;
     perfilpersonal.getAll(req,res,function(res){response=res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Get by id
 app.post('/asset/getPerfilPersonalByID',upload.single('card'),function getPpById(req,res,next){
     var response;
     perfilpersonal.getById(req,res,function(res){response=res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Delete
 app.post('/asset/deletePerfilPersonal',upload.single('card'),function deletePp(req,res,next){
     var response;
     perfilpersonal.delete(req,res,function(res){response=res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Update
 app.post('/asset/updatePerfilPersonal',upload.single('card'),function updatePp(req,res,next){
     var response;
     perfilpersonal.update(req,res,function(res){response=res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 
@@ -259,30 +264,35 @@ app.post('/asset/updatePerfilPersonal',upload.single('card'),function updatePp(r
 app.post('/asset/createPerfilPublico', upload.single('card'),function CreatePPAssets(req,res,next){
     var response;
     perfilpublico.create(req,res,function(res){response=res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Get
 app.post('/asset/getPerfilPublico',upload.single('card'),function getAllPp(req,res,next){
     var response;
     perfilpublico.getAll(req,res,function(res){response=res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Get by id
 app.post('/asset/getPerfilPublicoByID',upload.single('card'),function getPpById(req,res,next){
     var response;
     perfilpublico.getById(req,res,function(res){response=res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Delete
 app.post('/asset/deletePerfilPublico',upload.single('card'),function deletePp(req,res,next){
     var response;
     perfilpublico.delete(req,res,function(res){response=res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Update
 app.post('/asset/updatePerfilPublico',upload.single('card'),function updatePp(req,res,next){
     var response;
     perfilpublico.update(req,res,function(res){response=res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 
