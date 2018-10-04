@@ -197,24 +197,28 @@ app.post('/participant/createAdmin', upload.single('card'), function CreateAdmin
 app.post('/participant/getAdmins', upload.single('card'), function getAdmins(req,res,next){
     var response;
     admin.getAll(req,res,function(res){response = res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Get by id
 app.post('/participant/getAdminsById', upload.single('card'), function getAdminsById(req,res,next){
     var response;
     admin.getById(req,res,function(res){response = res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Update
 app.post('/participant/updateAdmin', upload.single('card'), function updateAdmin(req,res,next){
     var response;
     admin.update(req,res,function(res){response = res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Delete
 app.post('/participant/deleteAdmin', upload.single('card'), function deleteAdmin(req,res,next){
     var response;
     admin.delete(req,res,function(res){response = res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 
