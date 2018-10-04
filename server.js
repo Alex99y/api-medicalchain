@@ -47,6 +47,7 @@ if ( typeof config.port == 'undefined' ||
 app.post('/ping',upload.single('card'), function Ping(req,res,next) {
     var response;
     composer.ping(req,res,function(res){response = res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 
@@ -60,6 +61,7 @@ app.post('/createCard',upload.single('card'), function(req,res){
         res.setHeader("filename",req.body.name+"User.card");
         fs.createReadStream("./cards/"+ req.body.name +"User.card").pipe(res);
     }else{
+        res.status(405);
         res.send(response);
     }
     shell.exec("./lib/scripts/deleteCard.sh");
@@ -87,6 +89,7 @@ app.post('/bindIdentity',upload.single('card'), function(req,res){
 app.post('/uploadRegistry',upload.fields([{name: "card",maxCount: 1},{name: "file",maxCount: 1}]), 
 function(req,res,next){
     registry.uploadRegistry(req,res,function(response){
+        if (JSON.parse(response).status == "fail") { res.status(405); }
         res.send(response);
     })
 });
