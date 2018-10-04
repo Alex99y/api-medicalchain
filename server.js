@@ -190,6 +190,7 @@ app.post('/participant/deletePatient', upload.single('card'), function deletePat
 app.post('/participant/createAdmin', upload.single('card'), function CreateAdmin(req,res,next){
     var response;
     admin.create(req,res,function(res){response = res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Get all
