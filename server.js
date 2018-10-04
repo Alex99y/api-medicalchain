@@ -114,11 +114,13 @@ app.post('/identity/issue', upload.single('card'), function Issue(req,res,next){
 app.post('/transaction/giveAccess', upload.single('card'), function giveAccess(req,res,next){
     var response;
     registryAccess.giveAccess(req,res,function(res){response = res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 app.post('/transaction/revoqueAccess', upload.single('card'), function revoqueAccess(req,res,next){
     var response;
     registryAccess.revoqueAccess(req,res,function(res){response = res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 /* --------- PARTICIPANT DOCTOR --------- */

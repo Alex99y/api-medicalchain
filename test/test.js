@@ -400,78 +400,112 @@ const url= config.host + ":" + config.port;
 //     });
 //   });
 // });
-/* Doctor operation */
-describe('Doctor', function() {
-    this.timeout(60000);
-    describe('Create Doctor', function() {
-      it('Should create a new Doctor', function() {
-          return chai.request(url)
-              .post('/participant/createDoctor')
-              .type('multipart/form-data')
-              .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
-              .field("idRegistry",randomId)
-              .field("idDoctor",randomId)
-              .then( function(res){
-                  expect(res.status).to.be.equal(200);
-              }).catch(function(err){
-                  throw err;
-              });
-      });
-  });
-    describe('Get Doctors', function() {
-      it('Should get all Doctors', function() {
-          return chai.request(url)
-              .post('/participant/getDoctors')
-              .type('multipart/form-data')
-              .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
-              .then( function(res){
-                  expect(res.status).to.be.equal(200);
-              }).catch(function(err){
-                  throw err;
-              });      
-      });
-    });
-    describe('Get Doctor by id', function() {
-      it('Should get Doctor by id', function() {
-          return chai.request(url)
-              .post('/participant/getDoctors')
-              .type('multipart/form-data')
-              .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
-              .field("id",randomId)
-              .then( function(res){
-                  expect(res.status).to.be.equal(200);
-              }).catch(function(err){
-                  throw err;
-              }); 
-      });
-    });
-    describe('Update Doctor', function() {
-      it('Should update Doctor', function() {
-          return chai.request(url)
-              .post('/participant/updateDoctor')
-              .type('multipart/form-data')
-              .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
-              .field("idRegistry",randomId)
-              .field("idDoctor",randomId)
-              .then( function(res){
-                  expect(res.status).to.be.equal(200);
-              }).catch(function(err){
-                  throw err;
-              });
-      });
-    });
-    describe('Delete Doctor', function() {
-      it('Should delete Doctor', function() {
-          return chai.request(url)
-              .post('/participant/deleteDoctor')
-              .type('multipart/form-data')
-              .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
-              .field("id",randomId)
-              .then( function(res){
-                  expect(res.status).to.be.equal(200);
-              }).catch(function(err){
-                  throw err;
-              }); 
-      });
-    });
-  });
+// /* Doctor operation */
+// describe('Doctor', function() {
+//     this.timeout(60000);
+//     describe('Create Doctor', function() {
+//       it('Should create a new Doctor', function() {
+//           return chai.request(url)
+//               .post('/participant/createDoctor')
+//               .type('multipart/form-data')
+//               .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+//               .field("idRegistry",randomId)
+//               .field("idDoctor",randomId)
+//               .then( function(res){
+//                   expect(res.status).to.be.equal(200);
+//               }).catch(function(err){
+//                   throw err;
+//               });
+//       });
+//   });
+//     describe('Get Doctors', function() {
+//       it('Should get all Doctors', function() {
+//           return chai.request(url)
+//               .post('/participant/getDoctors')
+//               .type('multipart/form-data')
+//               .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+//               .then( function(res){
+//                   expect(res.status).to.be.equal(200);
+//               }).catch(function(err){
+//                   throw err;
+//               });      
+//       });
+//     });
+//     describe('Get Doctor by id', function() {
+//       it('Should get Doctor by id', function() {
+//           return chai.request(url)
+//               .post('/participant/getDoctors')
+//               .type('multipart/form-data')
+//               .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+//               .field("id",randomId)
+//               .then( function(res){
+//                   expect(res.status).to.be.equal(200);
+//               }).catch(function(err){
+//                   throw err;
+//               }); 
+//       });
+//     });
+//     describe('Update Doctor', function() {
+//       it('Should update Doctor', function() {
+//           return chai.request(url)
+//               .post('/participant/updateDoctor')
+//               .type('multipart/form-data')
+//               .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+//               .field("idRegistry",randomId)
+//               .field("idDoctor",randomId)
+//               .then( function(res){
+//                   expect(res.status).to.be.equal(200);
+//               }).catch(function(err){
+//                   throw err;
+//               });
+//       });
+//     });
+//     describe('Delete Doctor', function() {
+//       it('Should delete Doctor', function() {
+//           return chai.request(url)
+//               .post('/participant/deleteDoctor')
+//               .type('multipart/form-data')
+//               .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+//               .field("id",randomId)
+//               .then( function(res){
+//                   expect(res.status).to.be.equal(200);
+//               }).catch(function(err){
+//                   throw err;
+//               }); 
+//       });
+//     });
+//   });
+// /* Transaction operation */
+// describe('Transaction operation', function() {
+//     this.timeout(60000);
+//     describe('Give access to a Doctor', function() {
+//       it('Should give access to a Doctor', function() {
+//           return chai.request(url)
+//               .post('/transaction/giveAccess')
+//               .type('multipart/form-data')
+//               .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+//               .field("idRegistry","TEST")
+//               .field("idDoctor","TEST")
+//               .then( function(res){
+//                   expect(res.status).to.be.equal(200);
+//               }).catch(function(err){
+//                   throw err;
+//               });
+//       });
+//   });
+//   describe('Revoque access to a Doctor', function() {
+//     it('Should revoque access to a Doctor', function() {
+//         return chai.request(url)
+//             .post('/transaction/revoqueAccess')
+//             .type('multipart/form-data')
+//             .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+//             .field("idRegistry","TEST")
+//             .field("idDoctor","TEST")
+//             .then( function(res){
+//                 expect(res.status).to.be.equal(200);
+//             }).catch(function(err){
+//                 throw err;
+//             });
+//     });
+//   });
+// });
