@@ -302,24 +302,29 @@ app.post('/asset/updatePerfilPublico',upload.single('card'),function updatePp(re
 app.post('/asset/createHistorialMedico', upload.single('card'),function CreateAssetsHH(req,res,next){
     var response;
     historial.create(req,res,function(res){response=res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
+    console.log(response);
     res.send(response);
 });
 // Get
 app.post('/asset/getHistorialMedico',upload.single('card'),function getAllPp(req,res,next){
     var response;
     historial.getAll(req,res,function(res){response=res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Get by id
 app.post('/asset/getHistorialMedicoByID',upload.single('card'),function getPpById(req,res,next){
     var response;
     historial.getById(req,res,function(res){response=res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Delete
 app.post('/asset/deleteHistorialMedico',upload.single('card'),function deletePp(req,res,next){
     var response;
     historial.delete(req,res,function(res){response=res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 

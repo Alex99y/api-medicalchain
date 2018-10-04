@@ -179,22 +179,103 @@ const url= config.host + ":" + config.port;
 //     });
 // });
 
-/* PerfilPublico operation */
-describe('PerfilPublico', function() {
+// /* PerfilPublico operation */
+// describe('PerfilPublico', function() {
+//     this.timeout(60000);
+//     describe('Create PerfilPublico', function() {
+//         it('Should create new PerfilPublico', function() {
+//             return chai.request(url)
+//                 .post('/asset/createPerfilPublico')
+//                 .type('multipart/form-data')
+//                 .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+//                 .field("id",randomId)
+//                 .field("name","test")
+//                 .field("lastname","test")
+//                 .field("email","test")
+//                 .field("direction","test")
+//                 .field("date",0)
+//                 .field("license","test")
+//                 .then( function(res){
+//                     expect(res.status).to.be.equal(200);
+//                 }).catch(function(err){
+//                     throw err;
+//                 });
+//         });
+//     });
+//     describe('Get all PerfilPublico', function() {
+//         it('Should get all PerfilPublico', function() {
+//             return chai.request(url)
+//                 .post('/asset/getPerfilPublico')
+//                 .type('multipart/form-data')
+//                 .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+//                 .then( function(res){
+//                     expect(res.status).to.be.equal(200);
+//                 }).catch(function(err){
+//                     throw err;
+//                 });      
+//         });
+//     });
+//     describe('Get one PerfilPublico by id', function() {
+//         it('Should get one PerfilPublico by id', function() {
+//             return chai.request(url)
+//             .post('/asset/getPerfilPublicoById')
+//             .type('multipart/form-data')
+//             .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+//             .field("id",randomId)
+//             .then( function(res){
+//                 expect(res.status).to.be.equal(200);
+//             }).catch(function(err){
+//                 throw err;
+//             });     
+//         });
+//     });
+//     describe('Update PerfilPublico', function() {
+//         it('Should update PerfilPublico', function() {
+//             return chai.request(url)
+//                 .post('/asset/updatePerfilPublico')
+//                 .type('multipart/form-data')
+//                 .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+//                 .field("id",randomId)
+//                 .field("name","test")
+//                 .field("lastname","test")
+//                 .field("email","test")
+//                 .field("direction","test")
+//                 .field("date",0)
+//                 .field("license","test")
+//                 .then( function(res){
+//                     expect(res.status).to.be.equal(200);
+//                 }).catch(function(err){
+//                     throw err;
+//                 });
+//         });
+//     });
+//     describe('Delete PerfilPublico', function() {
+//         it('Should delete PerfilPublico', function() {
+//             return chai.request(url)
+//             .post('/asset/deletePerfilPublico')
+//             .type('multipart/form-data')
+//             .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
+//             .field("id",randomId)
+//             .then( function(res){
+//                 expect(res.status).to.be.equal(200);
+//             }).catch(function(err){
+//                 throw err;
+//             }); 
+//         });
+//     });
+// });
+
+/* HistorialMedico operation */
+describe('HistorialMedico', function() {
     this.timeout(60000);
-    describe('Create PerfilPublico', function() {
-        it('Should create new PerfilPublico', function() {
+    describe('Create HistorialMedico', function() {
+        it('Should create new HistorialMedico', function() {
             return chai.request(url)
-                .post('/asset/createPerfilPublico')
+                .post('/asset/createHistorialMedico')
                 .type('multipart/form-data')
                 .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
-                .field("id",randomId)
-                .field("name","test")
-                .field("lastname","test")
-                .field("email","test")
-                .field("direction","test")
-                .field("date",0)
-                .field("license","test")
+                .field("idRegistry",randomId)
+                .field("idPatient",randomId)
                 .then( function(res){
                     expect(res.status).to.be.equal(200);
                 }).catch(function(err){
@@ -202,10 +283,10 @@ describe('PerfilPublico', function() {
                 });
         });
     });
-    describe('Get all PerfilPublico', function() {
-        it('Should get all PerfilPublico', function() {
+    describe('Get all HistorialMedico', function() {
+        it('Should get all HistorialMedico', function() {
             return chai.request(url)
-                .post('/asset/getPerfilPublico')
+                .post('/asset/getHistorialMedico')
                 .type('multipart/form-data')
                 .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
                 .then( function(res){
@@ -215,10 +296,10 @@ describe('PerfilPublico', function() {
                 });      
         });
     });
-    describe('Get one PerfilPublico by id', function() {
-        it('Should get one PerfilPublico by id', function() {
+    describe('Get one HistorialMedico by id', function() {
+        it('Should get one HistorialMedico by id', function() {
             return chai.request(url)
-            .post('/asset/getPerfilPublicoById')
+            .post('/asset/getHistorialMedicoById')
             .type('multipart/form-data')
             .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
             .field("id",randomId)
@@ -229,30 +310,10 @@ describe('PerfilPublico', function() {
             });     
         });
     });
-    describe('Update PerfilPublico', function() {
-        it('Should update PerfilPublico', function() {
+    describe('Delete HistorialMedico', function() {
+        it('Should delete HistorialMedico', function() {
             return chai.request(url)
-                .post('/asset/updatePerfilPublico')
-                .type('multipart/form-data')
-                .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
-                .field("id",randomId)
-                .field("name","test")
-                .field("lastname","test")
-                .field("email","test")
-                .field("direction","test")
-                .field("date",0)
-                .field("license","test")
-                .then( function(res){
-                    expect(res.status).to.be.equal(200);
-                }).catch(function(err){
-                    throw err;
-                });
-        });
-    });
-    describe('Delete PerfilPublico', function() {
-        it('Should delete PerfilPublico', function() {
-            return chai.request(url)
-            .post('/asset/deletePerfilPublico')
+            .post('/asset/deleteHistorialMedico')
             .type('multipart/form-data')
             .attach('card', fs.readFileSync('./info/clinica/ClinicaAdmin@basic-sample-network.card'), 'test.card')
             .field("id",randomId)
