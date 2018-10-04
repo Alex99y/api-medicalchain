@@ -158,30 +158,36 @@ app.post('/participant/deleteDoctor', upload.single('card'), function deleteDoct
 app.post('/participant/createPatient', upload.single('card'), function CreatePatient(req,res,next){
     var response;
     paciente.create(req,res,function(res){response = res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
+    console.log(response);
     res.send(response);
 });
 // Get all
 app.post('/participant/getPatients', upload.single('card'), function getPatients(req,res,next){
     var response;
     paciente.getAll(req,res,function(res){response = res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Get by id
 app.post('/participant/getPatientsById', upload.single('card'), function getPatientsById(req,res,next){
     var response;
     paciente.getById(req,res,function(res){response = res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Update
 app.post('/participant/updatePatient', upload.single('card'), function updatePatient(req,res,next){
     var response;
     paciente.update(req,res,function(res){response = res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Delete
 app.post('/participant/deletePatient', upload.single('card'), function deletePatient(req,res,next){
     var response;
     paciente.delete(req,res,function(res){response = res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 
@@ -303,7 +309,6 @@ app.post('/asset/createHistorialMedico', upload.single('card'),function CreateAs
     var response;
     historial.create(req,res,function(res){response=res;});
     if (JSON.parse(response).status == "fail") { res.status(405); }
-    console.log(response);
     res.send(response);
 });
 // Get
@@ -330,6 +335,7 @@ app.post('/asset/deleteHistorialMedico',upload.single('card'),function deletePp(
 
 /* BAD REQUEST */
 app.all('*', function(req,res,next){
+    res.status(404);
     res.send('{"status":"fail","description":"Bad request"}');
 });
 
