@@ -16,14 +16,7 @@ var card = require('./lib/cards');
 const shell = require('shelljs');
 var identityOp = require('./lib/identityOp');
 var app = express();
-var upload = multer({ dest: config["uploadDir"], onError : function(err, next) {
-    /* DEBUG */
-    next(err);
-  }
-}),
-function(req, res) {
-  res.status(204).end();
-}})
+var upload = multer({ dest: config["uploadDir"]});
 var zip = require("./format/tarOp");
 process.title = "apimedicalchain";
 
