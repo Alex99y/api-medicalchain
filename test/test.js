@@ -13,7 +13,7 @@ const url= config.host + ":" + config.port;
 
 // /* Admin operation */
 // describe('Admin', function() {
-//   this.timeout(50000);
+//   this.timeout(60000);
 //   describe('Create an Admin', function() {
 //     it('Should create a new Admin', function() {
 //         return chai.request(url)
