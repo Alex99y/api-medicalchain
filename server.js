@@ -126,30 +126,35 @@ app.post('/transaction/revoqueAccess', upload.single('card'), function revoqueAc
 app.post('/participant/createDoctor', upload.single('card'), function CreateDoctor(req,res,next){
     var response;
     doctor.create(req,res,function(res){response = res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Get all
 app.post('/participant/getDoctors', upload.single('card'), function getDoctors(req,res,next){
     var response;
     doctor.getAll(req,res,function(res){response = res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Get by id
 app.post('/participant/getDoctorsById', upload.single('card'), function getDoctorsById(req,res,next){
     var response;
     doctor.getById(req,res,function(res){response = res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Update
 app.post('/participant/updateDoctor', upload.single('card'), function updateDoctor(req,res,next){
     var response;
     doctor.update(req,res,function(res){response = res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 // Delete
 app.post('/participant/deleteDoctor', upload.single('card'), function deleteDoctor(req,res,next){
     var response;
     doctor.delete(req,res,function(res){response = res;});
+    if (JSON.parse(response).status == "fail") { res.status(405); }
     res.send(response);
 });
 
@@ -159,7 +164,6 @@ app.post('/participant/createPatient', upload.single('card'), function CreatePat
     var response;
     paciente.create(req,res,function(res){response = res;});
     if (JSON.parse(response).status == "fail") { res.status(405); }
-    console.log(response);
     res.send(response);
 });
 // Get all
