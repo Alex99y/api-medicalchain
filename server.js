@@ -18,6 +18,7 @@ var identityOp = require('./lib/identityOp');
 var app = express();
 var upload = multer({ dest: config["uploadDir"]});
 var zip = require("./format/tarOp");
+let debug = require("debug");
 process.title = "apimedicalchain";
 
 
@@ -37,7 +38,11 @@ if ( typeof config.port == 'undefined' ||
         console.log("Error starting server, check the admin card or try again start the server");
         process.exit(1);
     }
-    console.log("Starting server on "+config.host + ":" + config.port);
+    if ( config.debug == true ) {
+        debug("Listening on "+config.host + ":" + config.port);
+    }else{
+        console.log("Listening on "+config.host + ":" + config.port);
+    }
 }
 
 

@@ -2,7 +2,6 @@
     "host": "localhost",
     "port": 3333,
     "uploadDir": "./Uploads/",
-    "debug": "true",
     "ipfs": {
         "host":"localhost",
         "port":"5001",
