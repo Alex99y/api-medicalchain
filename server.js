@@ -26,7 +26,6 @@ process.title = "apimedicalchain";
 if ( typeof config.port == 'undefined' ||
      typeof config.host == 'undefined' ||
      typeof config.uploadDir == 'undefined' ||
-     typeof config.debug == 'undefined' ||
      typeof config.profile == 'undefined' ||
      typeof config.ipfs == 'undefined' ||
      typeof config.adminCard == 'undefined') {
